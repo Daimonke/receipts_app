@@ -15,24 +15,29 @@
   font-size: 1rem;
 }
 
+body, html {
+  margin: 0;
+}
+body {
+  padding: 6px;
+}
 :root {
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+
   font-size: 16px;
 }
 
-header {
+.expensesNav {
   background-color: #250B38;
   border-radius: 4px;
   padding: 12px;
 }
 
-.expensesNav {
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  gap: 20px
+  gap: 20px;
 }
 
 .select {
@@ -62,6 +67,7 @@ header {
   border-radius: 4px;
   box-shadow: 0 0 18px 0 rgba(37,11,56,0.25);
   background-color: #ffffff;
+  z-index: 1;
 }
 
 .select-menu-item {
@@ -89,7 +95,9 @@ header {
 .btn-outlined {
   background-color: transparent;
 }
-
+.btn-contained {
+  background-color: #F0A023;
+}
 .font-small {
   font-size: 0.875rem;
 }
@@ -97,16 +105,25 @@ header {
   font-size: 1.25rem;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #E8DFED;
+  padding: 17px 19px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 @media (min-width: 760px) {
-  .expensesNav {
+  nav {
     justify-content: center;
+    gap: 30px;
   }
   .select {
     position: relative;
