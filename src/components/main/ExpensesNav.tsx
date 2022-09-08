@@ -47,7 +47,7 @@ const ExpensesNav = ({ receipt }: Props) => {
     });
   }, [rows]);
   return (
-    <>
+    <div>
       <nav className="expensesNav">
         <Select />
         <Button variant="outlined" onClick={addRow}>
@@ -55,7 +55,7 @@ const ExpensesNav = ({ receipt }: Props) => {
         </Button>
       </nav>
       {rows.length > 0 && <ExpenseBody rows={rows} handleRows={handleRows} />}
-    </>
+    </div>
   );
 };
 
