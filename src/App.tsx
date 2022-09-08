@@ -1,36 +1,50 @@
 import { createContext, useEffect, useState } from "react";
 import Footer from "./components/footer/Footer";
 import Main from "./components/main/Main";
-
-export interface ExpenseInterface {
+import { v4 as uuidv4 } from "uuid";
+export interface ReceiptInterface {
   id: string;
-  total: number;
+  total: string;
 }
 
 export interface CtxInterface {
-  total: number;
-  expenses: ExpenseInterface[];
-  handleExpense: (expense: ExpenseInterface) => void;
+  setTotal: (number: string) => void;
+  total: string;
+  receipts: ReceiptInterface[];
+  handleReceipt: (receipt: ReceiptInterface) => void;
+  newReceipt: () => void;
 }
 export const context = createContext<CtxInterface | null>(null);
 
 function App() {
-  const [expenses, setExpenses] = useState<ExpenseInterface[]>([]);
-  const [total, setTotal] = useState(0);
-  const handleExpense = (expense: ExpenseInterface) => {
-    const newExpenses = expenses.filter((item) => item.id !== expense.id);
-    setExpenses([...newExpenses, expense]);
-    console.log(expense.id);
+  const [receipts, setReceipts] = useState<ReceiptInterface[]>([]);
+  const [total, setTotal] = useState("");
+  const handleReceipt = (receipt: ReceiptInterface) => {
+    const ReceiptIndex = receipts.findIndex((item) => item.id === receipt.id);
+    const receiptsCopy = [...receipts];
+    receiptsCopy.splice(ReceiptIndex, 1, receipt);
+    setReceipts(receiptsCopy);
   };
+
+  const newReceipt = () => {
+    const newReceipt = {
+      id: uuidv4(),
+      total: "",
+    };
+    setReceipts([...receipts, newReceipt]);
+  };
+
   const ctxInitialValue: CtxInterface = {
+    setTotal,
     total,
-    expenses,
-    handleExpense,
+    receipts,
+    handleReceipt,
+    newReceipt,
   };
 
   useEffect(() => {
-    setTotal(expenses.reduce((c, n) => c + n.total, 0));
-  }, [expenses]);
+    setTotal(receipts.reduce((c, n) => c + Number(n.total), 0).toFixed(2));
+  }, [receipts]);
   return (
     <context.Provider value={ctxInitialValue}>
       <Main />
