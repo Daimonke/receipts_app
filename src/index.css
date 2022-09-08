@@ -17,12 +17,13 @@
 
 body, html {
   margin: 0;
+  
 }
 body {
   padding: 6px;
+  margin-bottom: 220px;
 }
 :root {
-
   font-size: 16px;
 }
 
@@ -106,17 +107,76 @@ nav {
 }
 
 footer {
+  z-index: 2;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   border-top: 1px solid #E8DFED;
   padding: 17px 19px;
+  background-color: #ffffff;
 }
 
 main {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  height: 100%;  
+}
+
+.divider {
+  width: 100%;
+  border-bottom: 1px solid #E8DFED;
+  height: 1px;
+}
+
+.expense-body {
+  padding: 10px;
+  background-color: #F4EEF7;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.expense-body-row {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 12px;
+}
+.expense-body-row input {
+  font-size: 0.875rem;
+  padding: 6px;
+  color: #52526A;
+  border: 1px solid #EAE8EC;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+}
+.expense-name-input {
+  width: 70%;
+}
+.expense-price-input {
+  text-align: right;
+  width: 30%;
+}
+
+.expense-total-div {
+  display: flex;
+  justify-content: space-between;
+}
+.expense-total-price {
+  font-size: 1.125rem;
+  font-family: 'HKGrotesk-Bold';
+}
+
+.receipt-total {
+  font-size: 1.25rem;
+  font-family: 'HKGrotesk-Bold';
+}
+
+.receipt-total-div {
+  display: flex;
   gap: 10px;
 }
 
