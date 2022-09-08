@@ -2,14 +2,12 @@ import React, { useContext } from "react";
 import { context } from "../../App";
 import ExpensesNav from "./ExpensesNav";
 
-type Props = {};
-
-const Main = (props: Props) => {
+const Main = () => {
   const ctx = useContext(context);
   return (
     <main>
-      {ctx?.expenses.map((item) => (
-        <ExpensesNav key={item.id} expense={item} />
+      {ctx?.receipts.map((item) => (
+        <ExpensesNav key={item.id} receipt={item} />
       ))}
     </main>
   );
