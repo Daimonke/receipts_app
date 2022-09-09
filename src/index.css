@@ -92,6 +92,7 @@ nav {
   border-radius: 19px;
   color: white;
   border: solid 2px #F0A023;
+  cursor: pointer;
 }
 .btn-outlined {
   background-color: transparent;
